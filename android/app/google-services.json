@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "663583241765",
+    "firebase_url": "https://chater-ad3e1.firebaseio.com",
+    "project_id": "chater-ad3e1",
+    "storage_bucket": "chater-ad3e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663583241765:android:c367f35c7cba913fa0b1cc",
+        "android_client_info": {
+          "package_name": "com.keepant.chater"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663583241765-jim4pr75ejf9bsmn2412olpk25idnkkg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.keepant.chater",
+            "certificate_hash": "462d9de0054101503f94dec8e0334e59f161c74f"
+          }
+        },
+        {
+          "client_id": "663583241765-vbg6ulfi6vgjdag6m9rapalea3r7ntfl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTBn1XlplIGLlvtJelZP3HMqQMTg84A7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663583241765-vbg6ulfi6vgjdag6m9rapalea3r7ntfl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
