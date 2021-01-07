@@ -23,8 +23,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _listPage[_currentIndex],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _listPage,
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onBottomNavTab,
