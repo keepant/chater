@@ -1,5 +1,5 @@
-import 'package:chater/pages/widgets/loading.dart';
-import 'package:chater/services/database.dart';
+import 'package:chater/widgets/loading.dart';
+import 'package:chater/data/db/database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,4 +1,4 @@
-import 'package:chater/services/auth_check.dart';
+import 'package:chater/data/auth/auth_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Chater',
       theme: ThemeData(
+        fontFamily: 'Signika',
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

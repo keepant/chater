@@ -1,6 +1,6 @@
-import 'package:chater/pages/login/login.dart';
-import 'package:chater/pages/widgets/loading.dart';
-import 'package:chater/services/auth.dart';
+import 'package:chater/screens/login/login.dart';
+import 'package:chater/widgets/loading.dart';
+import 'package:chater/data/auth/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

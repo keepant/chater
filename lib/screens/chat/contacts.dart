@@ -1,10 +1,10 @@
-import 'package:chater/pages/chat/chat.dart';
-import 'package:chater/pages/widgets/contact_widget.dart';
-import 'package:chater/pages/widgets/loading.dart';
+import 'package:chater/screens/chat/chat.dart';
+import 'package:chater/widgets/contact_widget.dart';
+import 'package:chater/widgets/loading.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:chater/services/database.dart';
+import 'package:chater/data/db/database.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Contacts extends StatefulWidget {

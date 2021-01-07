@@ -1,23 +1,23 @@
-import 'package:chater/pages/login/login.dart';
-import 'package:chater/services/auth.dart';
+import 'package:chater/screens/home.dart';
+import 'package:chater/screens/login/register.dart';
+import 'package:chater/data/auth/auth.dart';
+import 'package:chater/data/preferences/prefs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:chater/services/database.dart';
 
-class Register extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _RegisterState extends State<Register> {
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailControl = new TextEditingController();
-  final TextEditingController _namaControl = new TextEditingController();
   final TextEditingController _passwdControl = new TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
   bool _isHidePassword = true;
-  var db = new Database();
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -55,7 +55,6 @@ class _RegisterState extends State<Register> {
                 ),
               ),
             ),
-            //Positioned(top: 35, left: 0, child: backButton()),
           ],
         ),
       ),
@@ -106,34 +105,41 @@ class _RegisterState extends State<Register> {
       onTap: () async {
         FocusScope.of(context).unfocus();
         if (_formKey.currentState.validate()) {
-          //auth
-          final auth = new Auth();
-          User user;
+          User _user;
+          String _token;
 
           try {
-            user = await auth.registerUser(
-              _emailControl.text,
-              _passwdControl.text,
-              _namaControl.text,
+            _user = await auth.signInWithEmail(
+                _emailControl.text, _passwdControl.text);
+            _token = await _user.getIdToken();
+          } catch (error) {
+            Get.snackbar(
+              'Login failed!',
+              error,
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.black,
+              colorText: Colors.white,
             );
-          } catch (e) {
-            print(e);
           }
 
-          db.insertUser(
-            id: user.uid,
-            email: user.email,
-            name: _namaControl.text,
-          );
+          if (_token != null) {
+            print(_emailControl.text + _passwdControl.text);
 
-          Get.to(LoginPage());
-          Get.snackbar(
-            'Register successfully!',
-            'Login to access your account!',
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.black,
-            colorText: Colors.white,
-          );
+            await prefs.setToken(_token);
+
+            String userId = _user.uid;
+            await prefs.setUserId(userId);
+
+            print('token: $_token\nuserid: $userId');
+            Get.off(Home());
+            Get.snackbar(
+              'Login successfully!',
+              'Welcome to app!',
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.black,
+              colorText: Colors.white,
+            );
+          }
         }
       },
       child: Container(
@@ -153,11 +159,14 @@ class _RegisterState extends State<Register> {
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: [Theme.of(context).primaryColorDark, Theme.of(context).primaryColor],
+            colors: [
+              Theme.of(context).primaryColor,
+              Theme.of(context).primaryColorDark
+            ],
           ),
         ),
         child: Text(
-          'Register',
+          'Login',
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
@@ -173,7 +182,7 @@ class _RegisterState extends State<Register> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            'Sudah punya akun? ',
+            'Belum punya akun? ',
             style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
           ),
           SizedBox(
@@ -181,10 +190,10 @@ class _RegisterState extends State<Register> {
           ),
           InkWell(
             onTap: () {
-              Get.off(LoginPage());
+              Get.to(Register());
             },
             child: Text(
-              'Login disini',
+              'Dafar sekarang',
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontSize: 13,
@@ -201,7 +210,7 @@ class _RegisterState extends State<Register> {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        text: 'Register',
+        text: 'Login',
         style: TextStyle(
           fontSize: 30,
           fontWeight: FontWeight.w700,
@@ -216,13 +225,6 @@ class _RegisterState extends State<Register> {
       key: _formKey,
       child: Column(
         children: <Widget>[
-          _entryField(
-            'Name',
-            _namaControl,
-            hint: "Diplo xp.",
-            keyboardType: TextInputType.text,
-            warningText: 'Name cannot be empty!',
-          ),
           _entryField(
             'Email',
             _emailControl,

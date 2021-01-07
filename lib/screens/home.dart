@@ -1,5 +1,5 @@
-import 'package:chater/pages/chat/contacts.dart';
-import 'package:chater/pages/profile/profile.dart';
+import 'package:chater/screens/chat/contacts.dart';
+import 'package:chater/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
