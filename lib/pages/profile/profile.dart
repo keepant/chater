@@ -92,7 +92,7 @@ class _ProfileState extends State<Profile> {
                         child: CircleAvatar(
                           radius: 50.0,
                           backgroundImage: NetworkImage(
-                              'https://api.adorable.io/avatars/285/${dataUser.displayName}.png'),
+                              'https://ui-avatars.com/api/?size=128&name=${dataUser.displayName}'),
                         ),
                       ),
                       Padding(

@@ -18,7 +18,7 @@ class ContactWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -26,7 +26,8 @@ class ContactWidget extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 25,
-            backgroundImage: NetworkImage(img),
+            backgroundImage:
+                NetworkImage('https://ui-avatars.com/api/?size=128&name=$img'),
           ),
           Expanded(
             child: Padding(
@@ -43,6 +44,7 @@ class ContactWidget extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  SizedBox(height: 5.0),
                   Text(
                     detail ?? '',
                     overflow: TextOverflow.ellipsis,

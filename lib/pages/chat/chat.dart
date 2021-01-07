@@ -58,7 +58,8 @@ class _ChatPageState extends State<ChatPage> {
             ),
             CircleAvatar(
               radius: 20,
-              backgroundImage: NetworkImage(widget.img),
+              backgroundImage: NetworkImage(
+                  'https://ui-avatars.com/api/?size=128&name=${widget.img}'),
             ),
             SizedBox(
               width: 10.0,
@@ -199,7 +200,7 @@ class _ChatPageState extends State<ChatPage> {
               color: Theme.of(context).primaryColor,
             ),
             onPressed: () {
-              String chatId = _userId.hashCode <= widget.id.hashCode  
+              String chatId = _userId.hashCode <= widget.id.hashCode
                   ? '$_userId-${widget.id}'
                   : '${widget.id}-$_userId';
               db.updateChattingWith(

@@ -55,16 +55,14 @@ class _ContactsState extends State<Contacts> {
                   return data['id'] == _userId
                       ? Container()
                       : ContactWidget(
-                          img:
-                              'https://api.adorable.io/avatars/285/nama${data['name']}.png',
+                          img: data['name'],
                           title: data['name'],
                           detail: data['email'],
                           onTap: () {
                             Get.to(
                               ChatPage(
                                 id: document.id,
-                                img:
-                                    'https://api.adorable.io/avatars/285/nama${data['name']}.png',
+                                img: data['name'],
                                 name: data['name'],
                               ),
                             );
