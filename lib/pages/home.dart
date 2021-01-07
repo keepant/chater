@@ -9,7 +9,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  final _listPage = <Widget> [
+  final _listPage = <Widget>[
     Contacts(),
     Profile(),
   ];
@@ -32,11 +32,11 @@ class _HomeState extends State<Home> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
-            title: Text('Chat'),
+            label: 'Chat',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            title: Text('Profile'),
+            label: 'Profile',
           )
         ],
       ),
